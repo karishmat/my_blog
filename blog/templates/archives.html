@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% for post in object_list %}
+        <p>{{ post.date|date:"Y-m-d" }}<a href="/blog/{{ post.id }}">   {{ post.title }}</a></p>
+
+
+    {% endfor %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <form  action="/blog/search/" method="POST"> {% csrf_token %}
+    <search><input type="text" name="search" id="id_search"><input type="submit" value="Search"></search>
+    </form>
+    <h2>{{ msg }}</h2>
+    {% for post in object_list %}
+        <h2><a href="/blog/{{ post.id }}">{{ post.title }}</a></h2>
+        <div class="postdate">
+        on {{ post.date }}
+        </div>
+
+        <div class="postdata">
+        {{ post.body }}
+        </div>
+
+    {% endfor %}
+{% endblock %}
+

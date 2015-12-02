@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Your Idea</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css"/>
+</head>
+
+<body class="body">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
+    <header class="mainHead">
+    <img src="/static/img/logo.jpeg" width="170" height="100">
+    <p class='logoText'></p>
+    <nav><ul>
+        <li ><a href='/blog/'>Home</a></li>
+        <li><a href='/blog/latestnews'>News</a></li>
+        <li><a href='/blog/signup'>Signup</a></li>
+        <li><a href='/blog/sendpost'>Add Post</a></li>
+        <li><a href='http://www.consultadd.com/our-goals/'>About Us</a></li>
+    </ul></nav>
+    </header>
+
+<aside class="sideInfo">
+    <article>
+    <h3>Recent Ideas By You</h3>
+    {% block recentpost %}
+        {% for post in object_list %}
+            <h2><a href="/blog/{{ post.id }}">{{ post.title }}</a></h2>
+
+        {% endfor %}
+        
+    {% endblock %}
+    </article>
+</aside>
+{% block search %}
+
+{% endblock %}
+<div class="mainContent">
+<div class="content">
+{% block content %}
+
+{% endblock %}
+</div>
+</div>
+<footer class="mainFooter">
+<p>copyright &copy2015</p>
+</footer>
+</body>
+
+</html>

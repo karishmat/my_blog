@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+{% block content %}
+<form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" value="Submit">
+    </form>
+{% endblock %}
+
+<aside class="sideInfo">
+    <article>
+{% block recentpost %}
+    {% for recpost in recposts %}
+        <p>{{ recpost.title }}</p>
+    {% endfor %}
+{% endblock %}
+     </article>
+</aside>
+</body>
+</html>

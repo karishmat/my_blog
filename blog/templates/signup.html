@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% block content %}
+<h1>SignUp Here</h1>
+
+<form method="POST" action="">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+</form>
+
+{% if messages %}
+    {% for message in messages %}
+        <p>{% if message.tags %}{{ message}}{% endif %}</p>
+    {% endfor %}
+{% endif %}
+
+ {% if users %}
+        {% for user in users %}
+            <p>{{ user.first_name }}</p>
+        {% endfor %}
+ {% endif %}
+
+    <img height="100" width="200" src="https://www.google.co.in/images/srpr/logo11w.png">
+{% endblock %}
+</body>
+</html>

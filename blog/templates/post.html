@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css"/>
+    <title></title>
+</head>
+<body>
+
+<aside class="sideInfo">
+    <article>
+{% block recentpost %}
+    {% for recpost in recposts %}
+        <p>{{ recpost.title }}</p>
+    {% endfor %}
+{% endblock %}
+     </article>
+</aside>
+
+{% block content %}
+<h2><a href="/blog/{{ post.id }}">{{ post.title }}</a></h2>
+        <div class="postdate">
+        on {{ post.date }}
+        </div>
+    <div class="post">
+        <div class="postdata">
+        {{ post.body }}
+        </div>
+    </div>
+    <h4>{{ count }} Comment</h4>
+    {% for comment in comments %}
+        <comment>{{ comment.commenter }}  says-</comment><br>
+        {{ comment.comment }}<br>
+
+    {% endfor %}
+    <a href="/blog/like/{{ post.id }}">Like</a>{{ post.like }}
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}
+</body>
+</html>
